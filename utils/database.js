@@ -3,11 +3,6 @@ import mongoose from "mongoose";
 let isConnected = false;
 
 export const connectToDb = async () => {
-  try {
-    mongoose.set("strictQuery", true);
-  } catch (error) {
-    console.log(error);
-  }
   if (isConnected) {
     console.log("mangoDB connected");
     return;
