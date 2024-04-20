@@ -24,7 +24,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             id=""
             cols="30"
             rows="10"
-            value={post.prompts}
+            value={post.prompt}
             onChange={(e) => {
               setPost({
                 ...post,
