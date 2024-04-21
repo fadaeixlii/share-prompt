@@ -2,7 +2,7 @@
 
 import Form from "@/components/Form";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 const UpdatePrompt = () => {
   const searchParams = useSearchParams();
