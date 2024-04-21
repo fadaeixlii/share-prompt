@@ -48,15 +48,16 @@ const UpdatePrompt = () => {
     };
     if (promptId) getPromptDetails();
   }, [promptId]);
-
   return (
-    <Form
-      type="Edit"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={EditPrompt}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Form
+        type="Edit"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={EditPrompt}
+      />
+    </Suspense>
   );
 };
 
