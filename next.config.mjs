@@ -2,7 +2,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
     serverComponentsExternalPackages: ["mongoose"],
+    missingSuspenseWithCSRBailout: false,
   },
+
   images: {
     domains: ["lh3.googleusercontent.com", "avatars.githubusercontent.com"],
   },
