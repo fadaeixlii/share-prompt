@@ -3,7 +3,7 @@ import { connectToDb } from "@/utils/database";
 
 export const GET = async (req) => {
   try {
-    const search = request.nextUrl.searchParams.get("searchValue");
+    const search = req.nextUrl.searchParams.get("searchValue");
     await connectToDb();
     const promptList = await Prompts.find({});
     console.log(promptList);
