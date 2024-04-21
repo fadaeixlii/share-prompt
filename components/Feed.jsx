@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import PromptCardList from "./PromptCardList";
+import { useRouter } from "next/navigation";
 
 const Feed = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -10,12 +11,19 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await fetch("/api/prompt");
+      const response = await fetch(
+        `/api/prompt${!!searchValue ? `?searchValue=${searchValue}` : ""}`
+      );
       const data = await response.json();
       setPosts(data);
     };
     fetchPost();
   }, [searchValue]);
+
+  const router = useRouter();
+  const handleTagClick = async (tag) => {
+    router.push(`/tag/${tag}`);
+  };
 
   return (
     <div className="feed">
@@ -30,7 +38,7 @@ const Feed = () => {
         />
       </form>
 
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      <PromptCardList data={posts} handleClickTag={handleTagClick} />
     </div>
   );
 };

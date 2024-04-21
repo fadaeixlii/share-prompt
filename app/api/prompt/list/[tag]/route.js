@@ -1,23 +1,21 @@
 import Prompts from "@/models/prompt";
 import { connectToDb } from "@/utils/database";
 
-export const GET = async (req) => {
+export const GET = async (req, { params }) => {
   try {
-    const search = request.nextUrl.searchParams.get("searchValue");
     await connectToDb();
-    const promptList = await Prompts.find({});
+    const promptList = await Prompts.find({})
+      .select({
+        tag: params.tag,
+      })
+      .populate("creator");
     console.log(promptList);
     console.log(req.query);
 
     return new Response(
-      JSON.stringify(
-        search
-          ? promptList.filter((p) => p.prompt.includes(search))
-          : promptList,
-        {
-          status: 200,
-        }
-      )
+      JSON.stringify(promptList, {
+        status: 200,
+      })
     );
   } catch (error) {
     console.log(error);

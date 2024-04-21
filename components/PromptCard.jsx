@@ -18,7 +18,12 @@ const PromptCard = ({ post, handleClickTag, handleEdit, handleDelete }) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+        <div
+          className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
+          onClick={() => {
+            router.push(`/user/${post?.creator._id}`);
+          }}
+        >
           <Image
             src={post?.creator.image}
             alt="user image"
