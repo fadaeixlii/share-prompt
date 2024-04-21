@@ -2,8 +2,8 @@ import Prompts from "@/models/prompt";
 import { connectToDb } from "@/utils/database";
 
 export const GET = async (req) => {
+  const search = req.nextUrl.searchParams.get("searchValue");
   try {
-    const search = req.nextUrl.searchParams.get("searchValue");
     await connectToDb();
     const promptList = await Prompts.find({});
     console.log(promptList);
